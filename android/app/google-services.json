@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974581832991",
+    "project_id": "plants-app-a93b3",
+    "storage_bucket": "plants-app-a93b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974581832991:android:e3eb253769c68e6415242a",
+        "android_client_info": {
+          "package_name": "com.example.flower_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl8mTYaJzyEq5QtscSSWUdgQB7utZhMeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
