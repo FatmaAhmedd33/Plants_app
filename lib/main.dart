@@ -15,10 +15,10 @@ import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
 void main() async {
-    /*WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );*/
+  );
   runApp(const MyApp());
 }
  
@@ -31,7 +31,12 @@ class MyApp extends StatelessWidget {
       create: (context) {return Cart();},
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        routes: {
+          RegisterPage.id:(context) => RegisterPage(),
+          LoginPage.id:(context) => LoginPage(),
+          HomePage.id:(context) => HomePage()
+        },
+        initialRoute: RegisterPage.id,
       ),
     );
   }

@@ -1,83 +1,144 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/register.dart';
 import 'package:flower_app/shared/colors.dart';
-import 'package:flower_app/shared/contants.dart';
+import 'package:flower_app/widgets/custom_buttom.dart';
+import 'package:flower_app/widgets/custom_form_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../helper/show_snake_bar.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  static String id = 'LoginPage';
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool isLoading = false;
+  String? email, password;
+
+  GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return ModalProgressHUD(
+      inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 247, 247, 247),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(33.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        backgroundColor: kPrimaryColor,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+          child: Form(
+            key: formKey,
+            child: ListView(
               children: [
                 const SizedBox(
-                  height: 64,
+                  height: 50,
                 ),
-                TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    obscureText: false,
-                    decoration: decorationTextfield.copyWith(
-                      hintText: "Enter Your Email : ",
-                    )),
+                Image.asset(
+                  'assets/images/background.webp',
+                  height: 200,
+                  width: 500,
+                ),
                 const SizedBox(
-                  height: 33,
+                  height: 20,
                 ),
-                TextField(
-                    keyboardType: TextInputType.text,
-                    obscureText: true,
-                    decoration: decorationTextfield.copyWith(
-                      hintText: "Enter Your Password : ",
-                    )),
-                const SizedBox(
-                  height: 33,
-                ),
-                ElevatedButton(
-                  onPressed: () {},
+                const Center(
                   child: Text(
-                    "Sign in",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(BTNgreen),
-                    padding: MaterialStateProperty.all(EdgeInsets.all(12)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8))),
+                    'Your Plant App',
+                    style: TextStyle(color: Colors.white, fontSize: 23),
                   ),
                 ),
                 const SizedBox(
-                  height: 33,
+                  height: 20,
+                ),
+                const Row(
+                  children: [
+                    //wrap this text in row to make it in the defult of row in thwe start of page
+                    Text(
+                      'sign in',
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomFormTextField(
+                    onchange: (data) => email = data, text: 'Email'),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomFormTextField(
+                    onchange: (data) => password = data, text: 'Password'),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomButton(
+                  ontap: () async {
+                    //var auth = FirebaseAuth.instance; you can you the instant directly instead of create object
+                    if (formKey.currentState!.validate()) {
+                      isLoading = true;
+                      setState(() {
+                        //to update ui
+                      });
+
+                      try {
+                        await loginUser();
+                       // showSnackBar(context, 'your login is successed');
+                        Navigator.pushNamed(context, HomePage.id);
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          showSnackBar(
+                              context, 'No user found for that email.');
+                        } else if (e.code == 'wrong-password') {
+                          showSnackBar(context,
+                              'Wrong password provided for that user.');
+                        }
+                      } catch (e) {
+                        showSnackBar(context, e.toString());
+                      }
+                      isLoading = false;
+                      setState(() {
+                        //to update ui
+                      });
+                    } else {}
+                  },
+                  text: 'login',
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Do not have an account?", style: TextStyle(fontSize: 18)),
-                    TextButton(
-                      onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Register()),
-                            );
+                    const Text(
+                      "don't have an account? ",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RegisterPage.id);
                       },
-                      child:
-                          Text('sign up', style: TextStyle(color: Colors.black,fontSize: 18))),
-                 
+                      child: const Text(
+                        'register',
+                        style: TextStyle(color: Color(0xff5AB4BD)),
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> loginUser() async {
+    UserCredential user = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email!, password: password!);
   }
 }

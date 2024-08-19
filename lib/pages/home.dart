@@ -9,8 +9,9 @@ import 'package:flower_app/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+  static String id = 'HomePage';
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +99,7 @@ class Home extends StatelessWidget {
                         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => HomePage(),
                       ),
                     );
                       }),
@@ -136,7 +137,7 @@ class Home extends StatelessWidget {
        
                 ProductsAndPrice()
           ],
-          backgroundColor: appbarGreen,
+          backgroundColor: kPrimaryColor,
           title: Text("Home"),
         ));
   }

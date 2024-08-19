@@ -25,7 +25,7 @@ class _DetailsState extends State<Details> {
             ProductsAndPrice()
           
           ],
-          backgroundColor: appbarGreen,
+          backgroundColor: kPrimaryColor,
           title: Text("Details screen"),
         ),
         body: SingleChildScrollView(
