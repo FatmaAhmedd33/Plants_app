@@ -4,11 +4,13 @@ import 'package:flower_app/model/item.dart';
 import 'package:flower_app/provider/cart.dart';
 import 'package:flower_app/shared/appbar.dart';
 import 'package:flower_app/shared/colors.dart';
+import 'package:flower_app/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CheckOut extends StatelessWidget {
-  const CheckOut({Key? key}) : super(key: key);
+class CheckOutPage extends StatelessWidget {
+  const CheckOutPage({super.key});
+  static String id = 'CheckOutPage';
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class CheckOut extends StatelessWidget {
                   }),
             ),
           ),
-          ElevatedButton(
+          /*ElevatedButton(
             onPressed: () {},
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(BTNpink),
@@ -59,7 +61,8 @@ class CheckOut extends StatelessWidget {
               "Pay \$${carttt.price}",
               style: TextStyle(fontSize: 19),
             ),
-          ),
+          ),*/
+          CustomButton(text: r"buy it now $${carttt.price}")
         ],
       ),
     );

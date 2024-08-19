@@ -31,11 +31,11 @@ class ProductsAndPrice extends StatelessWidget {
             IconButton(
               onPressed: () {
                 Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CheckOut(),
-                      ),
-                    );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CheckOutPage(),
+                  ),
+                );
               },
               icon: Icon(Icons.add_shopping_cart),
             ),

@@ -5,15 +5,15 @@ import 'package:flower_app/shared/appbar.dart';
 import 'package:flower_app/shared/colors.dart';
 import 'package:flutter/material.dart';
 
-class Details extends StatefulWidget {
+class DetailsPage extends StatefulWidget {
+  DetailsPage({super.key, required this.product});
   Item product;
-  Details({required this.product});
-
+  
   @override
-  State<Details> createState() => _DetailsState();
+  State<DetailsPage> createState() => _DetailsPageState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsPageState extends State<DetailsPage> {
   // const Details({Key? key}) : super(key: key);
   bool isShowMore = true;
 
@@ -21,10 +21,7 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          actions: [
-            ProductsAndPrice()
-          
-          ],
+          actions: [ProductsAndPrice()],
           backgroundColor: kPrimaryColor,
           title: Text("Details screen"),
         ),
@@ -47,7 +44,7 @@ class _DetailsState extends State<Details> {
                 children: [
                   Container(
                       padding: EdgeInsets.all(4),
-                      child: Text(
+                      child:  Text(
                         "New",
                         style: TextStyle(fontSize: 15),
                       ),

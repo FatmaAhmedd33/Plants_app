@@ -17,7 +17,7 @@ class CustomFormTextField extends StatelessWidget {
         onChanged: onchange,
         decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.blue),
+            borderSide: BorderSide(color: Colors.white),
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),

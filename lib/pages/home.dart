@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final carttt = Provider.of<Cart>(context);
+    final carttt = Provider.of<Cart>(context);
 
     return Scaffold(
         body: Padding(
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Details(product: items[index]),
+                        builder: (context) => DetailsPage(product: items[index]),
                       ),
                     );
                   },
@@ -51,15 +51,12 @@ class HomePage extends StatelessWidget {
                     ]),
                     footer: GridTileBar(
 // backgroundColor: Color.fromARGB(66, 73, 127, 110),
-                      trailing:
-                         
-                          IconButton(
-                            color: Color.fromARGB(255, 62, 94, 70),
-                            onPressed: () {
-                              carttt.add(items[index]);
-                            },
-                            icon: Icon(Icons.add)),
-                 
+                      trailing: IconButton(
+                          color: Color.fromARGB(255, 62, 94, 70),
+                          onPressed: () {
+                            carttt.add(items[index]);
+                          },
+                          icon: Icon(Icons.add)),
 
                       leading: Text("\$12.99"),
 
@@ -96,23 +93,24 @@ class HomePage extends StatelessWidget {
                       title: Text("Home"),
                       leading: Icon(Icons.home),
                       onTap: () {
-                        Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
+                       /* Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );*/
+                        Navigator.pushNamed(context, HomePage.id);
                       }),
                   ListTile(
                       title: Text("My products"),
                       leading: Icon(Icons.add_shopping_cart),
                       onTap: () {
                         Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CheckOut(),
-                      ),
-                    );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CheckOutPage(),
+                          ),
+                        );
                       }),
                   ListTile(
                       title: Text("About"),
@@ -133,15 +131,9 @@ class HomePage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          actions: [
-       
-                ProductsAndPrice()
-          ],
+          actions: [ProductsAndPrice()],
           backgroundColor: kPrimaryColor,
           title: Text("Home"),
         ));
   }
 }
-
-
-

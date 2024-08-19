@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
         routes: {
           RegisterPage.id:(context) => RegisterPage(),
           LoginPage.id:(context) => LoginPage(),
-          HomePage.id:(context) => HomePage()
+          HomePage.id:(context) => HomePage(),
+          CheckOutPage.id:(context) => CheckOutPage(),
+          
         },
         initialRoute: RegisterPage.id,
       ),
