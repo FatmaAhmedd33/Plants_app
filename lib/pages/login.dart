@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       try {
                         await loginUser();
-                       // showSnackBar(context, 'your login is successed');
+                       showSnackBar(context, 'your login is successed');
                         Navigator.pushNamed(context, HomePage.id);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {

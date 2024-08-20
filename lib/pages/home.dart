@@ -5,6 +5,7 @@ import 'package:flower_app/contants.dart';
 import 'package:flower_app/model/item.dart';
 import 'package:flower_app/pages/checkout.dart';
 import 'package:flower_app/pages/details_screen.dart';
+import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/provider/cart.dart';
 import 'package:flower_app/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -88,17 +89,19 @@ class HomePage extends StatelessWidget {
                   UserAccountsDrawerHeader(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/images/test.jpg"),
-                          fit: BoxFit.cover),
+                          image: AssetImage(kLogo), fit: BoxFit.cover),
                     ),
                     currentAccountPicture: CircleAvatar(
                         radius: 55,
                         backgroundImage:
                             AssetImage("assets/images/backgroundforuser.jpeg")),
-                    accountEmail: Text(email!),
-                    accountName: Text("fatma ahmed",
+                    accountEmail: Text(
+                      email!,
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    accountName: Text("hi,",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: kPrimaryColor,
                         )),
                   ),
                   ListTile(
@@ -117,12 +120,13 @@ class HomePage extends StatelessWidget {
                       title: Text("My products"),
                       leading: Icon(Icons.add_shopping_cart),
                       onTap: () {
-                        Navigator.push(
+                       /* Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => CheckOutPage(),
                           ),
-                        );
+                        );*/
+                        Navigator.pushNamed(context, CheckOutPage.id);
                       }),
                   ListTile(
                       title: Text("About"),
@@ -131,7 +135,9 @@ class HomePage extends StatelessWidget {
                   ListTile(
                       title: Text("Logout"),
                       leading: Icon(Icons.exit_to_app),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.pushNamed(context, LoginPage.id);
+                      }),
                 ],
               ),
             ],

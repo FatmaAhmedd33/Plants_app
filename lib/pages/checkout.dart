@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flower_app/contants.dart';
-import 'package:flower_app/model/item.dart';
 import 'package:flower_app/provider/cart.dart';
 import 'package:flower_app/widgets/custom_appbar.dart';
 
@@ -27,7 +26,7 @@ class CheckOutPage extends StatelessWidget {
         child: Column(
           children: [
             SingleChildScrollView(
-             // padding: EdgeInsets.symmetric(horizontal: 16),
+              // padding: EdgeInsets.symmetric(horizontal: 16),
               child: SizedBox(
                 height: 550,
                 child: ListView.builder(
