@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           CheckOutPage.id:(context) => CheckOutPage(),
           
         },
-        initialRoute: RegisterPage.id,
+        initialRoute: LoginPage.id,
       ),
     );
   }

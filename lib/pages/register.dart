@@ -9,7 +9,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../helper/show_snake_bar.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
   static String id = 'RegisterPage';
 
   @override
@@ -42,7 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 50,
                 ),
                 Image.asset(
-                  'assets/images/background.webp',
+                  kLogo,
                   height: 200,
                   width: 500,
                 ),
@@ -165,6 +165,5 @@ class _RegisterPageState extends State<RegisterPage> {
       email: email!,
       password: password!,
     );
-   
   }
 }

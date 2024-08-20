@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                 ),
                 Image.asset(
-                  'assets/images/background.webp',
+                  kLogo,
                   height: 200,
                   width: 500,
                 ),
