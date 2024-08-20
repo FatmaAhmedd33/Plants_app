@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flower_app/contants.dart';
 import 'package:flower_app/pages/home.dart';
-import 'package:flower_app/shared/colors.dart';
 import 'package:flower_app/widgets/custom_buttom.dart';
 import 'package:flower_app/widgets/custom_form_text_field.dart';
 import 'package:flutter/material.dart';
@@ -160,7 +160,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> resigterUser() async {
-    UserCredential user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email!, password: password!);
+    UserCredential user =
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email!,
+      password: password!,
+    );
+   
   }
 }

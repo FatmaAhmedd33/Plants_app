@@ -1,21 +1,31 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flower_app/contants.dart';
 import 'package:flower_app/model/item.dart';
 import 'package:flower_app/pages/checkout.dart';
 import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/provider/cart.dart';
-import 'package:flower_app/shared/appbar.dart';
-import 'package:flower_app/shared/colors.dart';
+import 'package:flower_app/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
   static String id = 'HomePage';
+  String? name, email;
 
   @override
   Widget build(BuildContext context) {
     final carttt = Provider.of<Cart>(context);
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      // Name, email address, and profile photo URL
+
+      email = user.email;
+
+      // Check if user's email is verified
+    }
 
     return Scaffold(
         body: Padding(
@@ -33,7 +43,8 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsPage(product: items[index]),
+                        builder: (context) =>
+                            DetailsPage(product: items[index]),
                       ),
                     );
                   },
@@ -82,9 +93,10 @@ class HomePage extends StatelessWidget {
                     ),
                     currentAccountPicture: CircleAvatar(
                         radius: 55,
-                        backgroundImage: AssetImage("assets/images/ali.jpg")),
-                    accountEmail: Text("ali@yahoo.com"),
-                    accountName: Text("ali Hassan",
+                        backgroundImage:
+                            AssetImage("assets/images/backgroundforuser.jpeg")),
+                    accountEmail: Text(email!),
+                    accountName: Text("fatma ahmed",
                         style: TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                         )),
@@ -93,7 +105,7 @@ class HomePage extends StatelessWidget {
                       title: Text("Home"),
                       leading: Icon(Icons.home),
                       onTap: () {
-                       /* Navigator.push(
+                        /* Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => HomePage(),
@@ -122,11 +134,6 @@ class HomePage extends StatelessWidget {
                       onTap: () {}),
                 ],
               ),
-              Container(
-                margin: EdgeInsets.only(bottom: 12),
-                child: Text("Developed by Ali Hassan © 2022",
-                    style: TextStyle(fontSize: 16)),
-              )
             ],
           ),
         ),

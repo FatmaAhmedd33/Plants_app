@@ -1,8 +1,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flower_app/contants.dart';
 import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/register.dart';
-import 'package:flower_app/shared/colors.dart';
 import 'package:flower_app/widgets/custom_buttom.dart';
 import 'package:flower_app/widgets/custom_form_text_field.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             key: formKey,
             child: ListView(
+             // scrollDirection: Axis.horizontal,
               children: [
+                
                 const SizedBox(
                   height: 50,
                 ),

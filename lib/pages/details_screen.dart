@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flower_app/contants.dart';
 import 'package:flower_app/model/item.dart';
-import 'package:flower_app/shared/appbar.dart';
-import 'package:flower_app/shared/colors.dart';
+import 'package:flower_app/widgets/custom_appbar.dart';
+
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -44,13 +45,13 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Container(
                       padding: EdgeInsets.all(4),
-                      child:  Text(
-                        "New",
-                        style: TextStyle(fontSize: 15),
-                      ),
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 129, 129),
                         borderRadius: BorderRadius.circular(4),
+                      ),
+                      child:  Text(
+                        "New",
+                        style: TextStyle(fontSize: 15),
                       )),
                   SizedBox(
                     width: 8,
