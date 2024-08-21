@@ -92,10 +92,7 @@ class _RestPasswordState extends State<RestPassword> {
                         if (e.code == 'user-not-found') {
                           showSnackBar(
                               context, 'No user found for that email.');
-                        } else if (e.code == 'wrong-password') {
-                          showSnackBar(context,
-                              'Wrong password provided for that user.');
-                        }
+                        }      
                       } catch (e) {
                         showSnackBar(context, e.toString());
                       }
