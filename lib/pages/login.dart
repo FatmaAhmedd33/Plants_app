@@ -1,8 +1,8 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/contants.dart';
 import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/register.dart';
+import 'package:flower_app/pages/reset_password.dart';
 import 'package:flower_app/widgets/custom_buttom.dart';
 import 'package:flower_app/widgets/custom_form_text_field.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +33,8 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             key: formKey,
             child: ListView(
-             // scrollDirection: Axis.horizontal,
+              // scrollDirection: Axis.horizontal,
               children: [
-                
                 const SizedBox(
                   height: 50,
                 ),
@@ -89,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       try {
                         await loginUser();
-                       showSnackBar(context, 'your login is successed');
+                        showSnackBar(context, 'your login is successed');
                         Navigator.pushNamed(context, HomePage.id);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
@@ -126,11 +125,32 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text(
                         'register',
-                        style: TextStyle(color: Color(0xff5AB4BD)),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "forget your password?",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RestPassword.id);
+                      },
+                      child: const Text(
+                        '  reset password',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

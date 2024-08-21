@@ -8,6 +8,7 @@ import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/pages/register.dart';
+import 'package:flower_app/pages/reset_password.dart';
 import 'package:flower_app/provider/cart.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           LoginPage.id:(context) => LoginPage(),
           HomePage.id:(context) => HomePage(),
           CheckOutPage.id:(context) => CheckOutPage(),
+          RestPassword.id:(context) => RestPassword()
           
         },
         initialRoute: LoginPage.id,

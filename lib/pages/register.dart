@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/contants.dart';
 import 'package:flower_app/pages/home.dart';
+import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/widgets/custom_buttom.dart';
 import 'package:flower_app/widgets/custom_form_text_field.dart';
 import 'package:flutter/material.dart';
@@ -142,11 +143,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         //make pop bec navigator build screens over the last screen
                         //if i make all push i will get more than
                         // two screens builded and that will destory my app
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context, LoginPage.id);
                       },
                       child: const Text(
-                        'login',
-                        style: TextStyle(color: Color(0xff5AB4BD)),
+                        ' login',
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                   ],

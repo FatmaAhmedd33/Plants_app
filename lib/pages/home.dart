@@ -97,11 +97,11 @@ class HomePage extends StatelessWidget {
                             AssetImage("assets/images/backgroundforuser.jpeg")),
                     accountEmail: Text(
                       email!,
-                      style: TextStyle(color: kPrimaryColor),
+                      style: TextStyle(color: Colors.black),
                     ),
-                    accountName: Text("hi,",
+                    accountName: Text("Hi,",
                         style: TextStyle(
-                          color: kPrimaryColor,
+                          color: Colors.black,
                         )),
                   ),
                   ListTile(
